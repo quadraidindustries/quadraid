@@ -18,9 +18,9 @@
             <img src="assets/quadraid_logo.png" alt="Company Logo" class="logo-img" />
             <span class="logo-name">Quadraid Industries</span>
         </a>
-        <nav style="display:flex; gap:12px; align-items:center;">
+        <nav class="u-flex-nav">
             <a href="about.html" class="nav-btn">About</a>
-            <a href="index.html" class="nav-btn" style="background:var(--gold); color:var(--dark);">Home</a>
+            <a href="index.html" class="nav-btn u-nav-btn-active">Home</a>
         </nav>
     </header>
 
@@ -28,7 +28,7 @@
     <div class="page-container">
         <div class="form-wrapper">
             <h1 class="page-title centered reveal">Connect With Us</h1>
-            <p class="form-intro-text reveal delay-1" style="text-align:center; max-width:580px; margin: 0 auto 2.5rem;">
+            <p class="form-intro-text reveal delay-1 u-margin-b-2">
                 Organizations and institutions looking for advanced purification solutions can reach out to discuss
                 system requirements, project scope, and deployment opportunities.
             </p>
@@ -66,18 +66,10 @@
             </form>
 
             <!-- Success message (hidden initially) -->
-            <div id="success-msg" style="
-                display: none;
-                margin-top: 30px;
-                text-align: center;
-                padding: 30px;
-                background: rgba(192,160,98,0.1);
-                border: 1px solid rgba(192,160,98,0.3);
-                border-radius: 8px;
-            ">
-                <h2 style="color:#C0A062; font-family:'Playfair Display',serif; margin-bottom:10px;">Thank You!</h2>
-                <p style="color:#ccc;">Thank you for your interest. We will contact you shortly.</p>
-                <a href="index.html" class="cta-btn" style="margin-top:20px; display:inline-block;">Back to Home</a>
+            <div id="success-msg" class="u-success-msg">
+                <h2 class="u-success-title">Almost Done!</h2>
+                <p class="u-success-text">Please ensure you send your details to <strong>contact@quadraid.com</strong>. (Your email app should have opened automatically.)</p>
+                <a href="index.html" class="cta-btn u-success-btn">Back to Home</a>
             </div>
         </div>
     </div>
@@ -92,7 +84,8 @@
         <div class="footer-col">
             <h4 class="footer-label">Contact Us</h4>
             <a href="mailto:contact@quadraid.com" class="footer-link">contact@quadraid.com</a>
-            <span class="footer-link">+1 234 567 8900</span>
+            <span class="footer-link">+91 9182045983</span>
+            <span class="footer-link">Hyderabad, Telangana,<br>India, 500043</span>
         </div>
         <div class="footer-col">
             <h4 class="footer-label">Follow Us</h4>
@@ -132,55 +125,7 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('contact-year').textContent = new Date().getFullYear();
-        // ── Scroll-aware header ──
-        const header = document.getElementById('site-header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // ── Scroll-reveal observer ──
-        const revealEls = document.querySelectorAll('.reveal');
-        const revealObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('is-visible');
-            });
-        }, { threshold: 0.1 });
-        revealEls.forEach(el => revealObs.observe(el));
-
-        // ── Input focus/blur effects ──
-        document.querySelectorAll('.form-input, .form-textarea').forEach(el => {
-            el.addEventListener('focus', () => { el.style.borderColor = '#C0A062'; });
-            el.addEventListener('blur', () => { el.style.borderColor = 'rgba(255, 255, 255, 0.1)'; });
-        });
-
-        // ── Form submission ──
-        const form = document.getElementById('contact-form');
-        const successMsg = document.getElementById('success-msg');
-
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value.trim();
-            const org = document.getElementById('organization').value.trim();
-
-            if (!name) {
-                alert('Please enter your full name.');
-                return;
-            }
-
-            console.log('Form Submitted:', {
-                name,
-                organization: org,
-                projectType: document.getElementById('project-type').value,
-                message: document.getElementById('message').value
-            });
-
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>

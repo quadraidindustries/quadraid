@@ -17,9 +17,9 @@
             <img src="assets/quadraid_logo.png" alt="Company Logo" class="logo-img" />
             <span class="logo-name">Quadraid Industries</span>
         </a>
-        <nav style="display:flex; gap:12px; align-items:center;">
+        <nav class="u-flex-nav">
             <a href="about.html" class="nav-btn">About</a>
-            <a href="contact.html" class="nav-btn" style="background:var(--gold); color:var(--dark);">Contact Us</a>
+            <a href="contact.html" class="nav-btn u-nav-btn-active">Contact Us</a>
         </nav>
     </header>
 
@@ -53,13 +53,13 @@
             <div class="card-grid">
                 <div class="card reveal scale-in delay-2">
                     <h3 class="card-title">Scalable Deployment</h3>
-                    <p class="body-text" style="font-size:0.95rem;">
+                    <p class="body-text u-font-sm">
                         Our systems are designed with scalable configurations that can be adapted to different operational needs and capacity requirements — from residential communities to large industrial facilities.
                     </p>
                 </div>
                 <div class="card reveal scale-in delay-4">
                     <h3 class="card-title">Future Innovation</h3>
-                    <p class="body-text" style="font-size:0.95rem;">
+                    <p class="body-text u-font-sm">
                         Quadraid Industries is actively working on next-generation purification technologies, including advanced membrane materials and intelligent monitoring capabilities to enhance filtration performance and system durability.
                     </p>
                 </div>
@@ -76,7 +76,8 @@
         <div class="footer-col">
             <h4 class="footer-label">Contact Us</h4>
             <a href="mailto:contact@quadraid.com" class="footer-link">contact@quadraid.com</a>
-            <span class="footer-link">+1 234 567 8900</span>
+            <span class="footer-link">+91 9182045983</span>
+            <span class="footer-link">Hyderabad, Telangana,<br>India, 500043</span>
         </div>
         <div class="footer-col">
             <h4 class="footer-label">Follow Us</h4>
@@ -116,30 +117,7 @@
         </div>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        // ── Scroll-aware header ──
-        const header = document.getElementById('site-header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 50);
-        });
-
-        // ── Scroll-reveal observer ──
-        const revealEls = document.querySelectorAll('.reveal');
-        const revealObs = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    const line = entry.target.nextElementSibling;
-                    if (line && line.classList.contains('animated-line')) {
-                        line.style.width = '60px';
-                    }
-                }
-            });
-        }, { threshold: 0.15 });
-        revealEls.forEach(el => revealObs.observe(el));
-    </script>
+    <script src="main.js"></script>
 </body>
 
 </html>
