@@ -613,8 +613,20 @@ header.solid {
     gap: 0;
     margin-top: 3.5rem;
     position: relative;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+@media (min-width: 900px) {
+    .process-stages {
+        justify-content: center;
+        overflow-x: visible;
+        padding-bottom: 0;
+    }
 }
 
 .process-stage {
@@ -793,8 +805,8 @@ header.solid {
 
 .app-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
     margin-top: 3rem;
 }
 
@@ -802,7 +814,7 @@ header.solid {
     background: var(--surface);
     border: 1px solid var(--gold-border);
     border-radius: 6px;
-    padding: 28px 20px;
+    padding: 24px 14px;
     text-align: center;
     transition: all 0.35s ease;
 }
@@ -1526,10 +1538,6 @@ footer {
     .hero-btn-group {
         justify-content: center;
         gap: 12px;
-    }
-    .cta-btn {
-        width: 100%;
-        text-align: center;
     }
     .form-box {
         padding: 24px;
