@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npx http-server ./src -p 3000 -o -c-1"
+    "dev": "npx http-server ./src -p 3001 -o -c-1"
   },
   "private": true
 }

@@ -79,37 +79,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ── Form submission (Contact) ──
+    // ── Form submission (Contact Automation) ──
     const form = document.getElementById('contact-form');
     const successMsg = document.getElementById('success-msg');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnLoader = document.getElementById('btn-loader');
     
     if (form && successMsg) {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
 
+            // 1. Basic validation
             const nameEl = document.getElementById('name');
-            const orgEl = document.getElementById('organization');
-            const typeEl = document.getElementById('project-type');
-            const msgEl = document.getElementById('message');
-
             const name = nameEl ? nameEl.value.trim() : '';
-            const org = orgEl ? orgEl.value.trim() : '';
             
             if (!name) {
                 alert('Please enter your full name.');
                 return;
             }
 
-            // Show the popup requested by the client
-            alert("Please mail your details to contact@quadraid.com");
+            // 2. UI Loading State
+            submitBtn.disabled = true;
+            if (btnLoader) btnLoader.style.display = 'inline-block';
+            submitBtn.querySelector('span').textContent = 'Sending...';
 
-            // Prepare an automatic email draft to make it easy for them
-            const subject = encodeURIComponent("Project Inquiry");
-            const body = encodeURIComponent(`Name: ${name}\nOrganization: ${org}\nProject Type: ${typeEl ? typeEl.value : ''}\n\nMessage:\n${msgEl ? msgEl.value : ''}`);
-            window.location.href = `mailto:contact@quadraid.com?subject=${subject}&body=${body}`;
+            // 3. Prepare data
+            const formData = new FormData(form);
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbzCOlo59YXT4tb7487oLJNk0NVdovUrTNLA7dp1HtsdIpm195jjwTDAIyDVkwnJJ4HSqw/exec';
 
-            form.style.display = 'none';
-            successMsg.style.display = 'block';
+            // 4. Send to Google Apps Script
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: formData 
+            })
+            .then(response => {
+                console.log('Success!', response);
+                // Switch UI to success state
+                form.style.display = 'none';
+                successMsg.style.display = 'block';
+                successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                alert('There was an error sending your message. Please try again or email us directly at contact@quadraid.com');
+                
+                // Re-enable button on error
+                submitBtn.disabled = false;
+                if (btnLoader) btnLoader.style.display = 'none';
+                submitBtn.querySelector('span').textContent = 'Submit Request';
+            });
         });
     }
 
