@@ -1610,3 +1610,37 @@ footer {
 .submit-btn:disabled::after {
     display: none;
 }
+
+/* ===== SEO & ACCESSIBILITY: BREADCRUMBS ===== */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+}
+
+.breadcrumbs a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumbs a:hover {
+    color: var(--gold);
+}
+
+.breadcrumbs .separator {
+    color: var(--gold);
+    opacity: 0.5;
+    font-size: 0.75rem;
+}
+
+.breadcrumbs .current {
+    color: var(--gold);
+    font-weight: 500;
+}
